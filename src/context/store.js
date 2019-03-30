@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const =React.createContext({
+const Store = React.createContext({
   alert:{
     type:'alert-danger',
     message:"username or password is incorrect!"
@@ -16,3 +16,5 @@ export const =React.createContext({
     }
   }
 }) 
+
+export default Store;

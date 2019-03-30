@@ -1,13 +1,19 @@
-import React,{userContext} from 'react';
+import React,{useReducer} from 'react';
 
 import Store from './store';
 import {routes} from './routes';
-import { Router } from "react-router";
-
+import {Route,BrowserRouter as Router} from 'react-router-dom';
+import Reducer from './reducer';
 export const Index = () => {
-  const {state,dispatch} = useContext(Store);
+  const [state,dispatch] = useReducer(Reducer,Store);
   console.log(state,'state');
   return (
-   <Router history={hashHistory} routes={routes} />
+    <Router>
+      <div>
+      {routes.map((route, i) => (
+        <Route exact key={i} path={route.path} component={route.component}/>
+      ))}
+      </div>
+    </Router>
   )
 }

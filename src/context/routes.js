@@ -1,19 +1,26 @@
+import {Login} from './components/login';
+import {Register} from './components/register';
+import {Home} from './components/home';
+
+// no surpose component:(() => require(['./components/login']))
+// route config 支持多层嵌套
+
 export const routes = [
   {
     path:'/',
     redirectTo:'/login',
-    pathMatch:'full'
+  
   },
   {
     path:'/login',
-    component:(resolve => require(['./components/login'],resolve))
+    component:Login
   },
   {
     path:'/register',
-    component:(resolve => require(['./components/register'],resolve))
+    component:Register
   },
   {
     path:'/home',
-    component:(resolve => require(['./components/home'],resolve))
+    component:Home
   },
 ]
