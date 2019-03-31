@@ -1,20 +1,23 @@
-import React from 'react';
 
-const Store = React.createContext({
-  alert:{
-    type:'alert-danger',
-    message:"username or password is incorrect!"
-  },
-  registration:{
-    registering:false
-  },
-  authentication:{
-    loggedIn:false,
-    user:{
-      username:'',
-      password:''
+export class FormStore {
+  constructor(values) {
+    this.values = values;
+    this.listeners = [];
+  }
+  get(name) {
+    return this.values[name]
+  }
+  set(name, value) {
+    // this.values name value
+    if (typeof name === 'string') {
+      this.values[name] = value;
+      this.notify(name);
     }
   }
-}) 
-
-export default Store;
+  notify(name) {
+    this.listeners.forEach(listener => listener(name))
+  }
+  subscribe(listener) {
+    this.listeners.push(listener);
+  }
+}

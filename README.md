@@ -24,5 +24,17 @@ react-router core api Router route switch , no dom api link BrowserRouter
 
 hashRouter # hash
 
+# 本项目分为三个demo
+
+# 版本一 基于redux login 
+
+# 版本二 基于 context hook 封装 form component ，实现可复用 // context/components
+
+# 版本三 基于封装的form component 实现login // context/views
+
+# 未处理的 UI 
+# 未处理 validation
+# 代码form component 复用度还是不高
+
 
 # form组件 难点 react.cloneElements

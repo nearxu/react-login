@@ -1,22 +1,34 @@
 import React from 'react';
-import { Field } from './field';
-import { Store } from './store';
-import { reducer } from './reducer';
+import Form from './form';
+import userFormStore from './userFormStore';
+import { useFormChange } from './useFormChange';
 
-export const Form = () => {
-  const store = React.useContext(Store);
-  const [state, dispatch] = React.useReducer(reducer, store);
-  console.log(state.values);
-  const submit = () => {
+const defaultName = {
+  username: '',
+  password: ''
+}
 
-  }
+const defaultRules = {
+  username: (val) => !!val.trim(),
+  password: (val) => /[0-9]/g.test(val)
+}
+
+export const Index = () => {
+  const store = userFormStore(defaultName, defaultRules);
+  useFormChange(store, (name) => {
+    console.log('change', name, store.get(name))
+  })
+
   return (
-    <Store.Provider value={{ state, dispatch }}>
-      <form onSubmit={submit}>
-        <Field name="username" />
-        <Field name="password" />
-        <button>submit</button>
-      </form>
-    </Store.Provider>
+    <div>
+      <Form store={store}>
+        <Form.Field label="username" name="username">
+          <input />
+        </Form.Field>
+        <Form.Field label="password" name="password">
+          <input type="password" />
+        </Form.Field>
+      </Form>
+    </div>
   )
 }

@@ -1,18 +1,26 @@
-import React,{useReducer} from 'react';
+import React from 'react';
 
-import Store from './store';
-import {routes} from './routes';
-import {Route,BrowserRouter as Router} from 'react-router-dom';
-import Reducer from './reducer';
+// import { routes } from './routes';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import  Login  from './views/login'
+import Home  from './views/home';
+import  Register  from './views/register';
+
 export const Index = () => {
-  const [state,dispatch] = useReducer(Reducer,Store);
-  console.log(state,'state');
   return (
+    // <Router>
+    //   <div>
+    //     {routes.map((route, i) => (
+    //       <Route exact key={i} path={route.path} component={route.component} />
+    //     ))}
+    //   </div>
+    // </Router>
     <Router>
       <div>
-      {routes.map((route, i) => (
-        <Route exact key={i} path={route.path} component={route.component}/>
-      ))}
+        <Route path="/" exact component={Login} />
+        <Route path="/home" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
       </div>
     </Router>
   )

@@ -13,6 +13,7 @@ export const FormField = (props) => {
     (...args) => name && store && store.set(name, valueGetter(...args)),
     [name, store, valueGetter]
   )
+  // not understand
   useFieldChange(store, name, () => {
     setValue(store.get(name))
   })
