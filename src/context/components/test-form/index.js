@@ -9,8 +9,8 @@ const defaultName = {
 }
 
 const defaultRules = {
-  username: (val) => !!val.trim(),
-  password: (val) => /[0-9]/g.test(val)
+  username: (val) => !!val.trim() || 'userName is require',
+  password: (val) => /[0-9]/g.test(val) || 'password is require'
 }
 
 export const Index = () => {
